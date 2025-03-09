@@ -2,7 +2,6 @@ from flask import Flask, request, render_template, jsonify  # Import jsonify
 import numpy as np
 import pandas as pd
 import pickle
-import ssl
 
 
 # flask app
@@ -129,8 +128,6 @@ def open_browser():
 
 if __name__ == '__main__':
     Timer(0, open_browser).start()
-    context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    context.load_cert_chain(certfile='ssl/cert.pem', keyfile='ssl/key.pem')
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
-    app.run(host="192.168.0.102", port=5001,debug=True,ssl_context=context)
 
