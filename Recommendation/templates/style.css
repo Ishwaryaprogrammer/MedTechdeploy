@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: var(--green);           /* Primary Green from the first palette */
+    --secondary-color: var(--light-green);   /* Light Green for a softer, vibrant feel */
+    --dark-color: var(--black);              /* Dark text for better readability */
+    --light-color: var(--white);             /* White background for subtle contrast */
+    --accent-color: var(--dark-green);       /* Dark Green accent for action items */
+    --border-radius: 8px;                    /* Rounded edges for softer design */
+    --box-shadow: var(--box-shadow);         /* Box shadow from the first palette */
+    --font-family: 'Poppins', sans-serif;     /* Font family remains the same */
+}
+
+
+
+/* Global styles */
+* {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease-out;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    font-size: 16px;
+    line-height: 1.5;
+}
+header h1 {
+    font-size: 2.5em;
+    color: var(--green);
+    margin-bottom: 30px;
+    text-shadow: var(--text-shadow);
+}
+
+
+
+/* Form Container */
+.container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--dark-color);
+}
+
+.form-control {
+    border-radius: var(--border-radius);
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Submit Button */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    padding: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* List Button */
+
+
+/* Modal Styles */
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: var(--dark-color);
+}
+
+/* List Styling */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Toggle Button */
+.toggle-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+}
+
+.toggle-button:hover {
+    background-color: #218838;
+}
+
+/* Speech Recognition Button */
+#startSpeechRecognition {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#startSpeechRecognition:hover {
+    background-color: #fb8c00;
+}
+
+/* Text Center */
+.text-center {
+    text-align: center;
+}
+.diet-heading {
+    font-size: 2.5em;
+    color: var(--green);
+    margin-bottom: 30px;
+    text-shadow: var(--text-shadow);
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    padding: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-primary:focus {
+    outline: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .toggle-button, button {
+        font-size: 16px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Med Tech</title>
+    <link rel="icon" href="icon-medtech.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+    
+    :root{
+    --green: #038C7F;          /* Primary Green */
+    --dark-green: #02776f;     /* Darker green for contrast */
+    --white: #ffffff;          /* White color for light background */
+    --light-green: #B5F2E1;    /* Light Green for highlights */
+    --black: #333;             /* Dark text color */
+    --light-color: #777;       /* Lighter gray color for secondary text */
+    --box-shadow: .5rem .5rem 0 rgba(22, 160, 133, .2); /* Box shadow */
+    --text-shadow: .4rem .4rem 0 rgba(201, 198, 198, 0.2); /* Text shadow */
+    --border: .2rem solid var(--green); /* Border color */
+    --hover-background: #fff;  /* Hover background for buttons */
+    --hover-color: #038C7F;    /* Hover text color */
+    }
+    
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+    text-decoration: none;
+    }
+
+    html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+    }
+    
+    section{
+    padding:2rem 9%;
+    }
+    
+    section:nth-child(even){
+    background: #f5f5f5;
+    }
+    
+    .heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: var(--text-shadow);
+    text-transform: uppercase;
+    color:var(--black);
+    font-size: 5rem;
+    letter-spacing: .4rem;
+    }
+    
+    .heading span{
+    text-transform: uppercase;
+    color:var(--green);
+    }
+    
+    .btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border:var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color:var(--green);
+    cursor: pointer;
+    font-size: 1.7rem;
+    background: #fff;
+    }
+    
+    .btn span{
+    padding:.7rem 1rem;
+    border-radius: .5rem;
+    background: var(--green);
+    color:#fff;
+    margin-left: .5rem;
+    }
+    
+    .btn:hover{
+    background: var(--green);
+    color:#fff;
+    }
+    
+    .btn:hover span{
+    color: var(--green);
+    background:#fff;
+    margin-left: 1rem;
+    }
+    
+    .header{
+    padding:2rem 9%;
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    header h1 {
+    font-size: 2.5em;
+    color: var(--green);
+    margin-bottom: 30px;
+    text-shadow: var(--text-shadow);
+}
+    }
+    
+    
+    
+    
+    #menu-btn{
+    font-size: 2.5rem;
+    border-radius: .5rem;
+    background: #eee;
+    color:var(--green);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none;
+    }
+    
+    .home{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 10rem;
+    }
+    
+    .home .image{
+    flex:1 1 45rem;
+    }
+    
+    .home .image img{
+    width: 100%;
+    }
+    
+    .home .content{
+    flex:1 1 45rem;
+    }
+    
+    .home .content h3{
+    font-size: 4.5rem;
+    color:var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+    }
+    
+    .home .content p{
+    font-size: 1.7rem;
+    color:var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+    }
+    
+    .icons-container{
+    display: grid;
+    gap:2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    }
+    
+    .icons-container .icons{
+    border:var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+    text-align: center;
+    padding: 2.5rem;
+    }
+    
+    .icons-container .icons i{
+    font-size: 4.5rem;
+    color:var(--green);
+    padding-bottom: .7rem;
+    }
+    
+    .icons-container .icons h3{
+    font-size: 4.5rem;
+    color:var(--black);
+    padding: .5rem 0;
+    text-shadow: var(--text-shadow);
+    }
+    
+    .icons-container .icons p{
+    font-size: 1.7rem;
+    color:var(--light-color);
+    }
+    
+    /* General Styles for Modal */
+    .modal-dialog{
+    max-width: 600px;
+    margin: 30px auto;
+    }
+    
+    .modal-body{
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--light-color);
+    }
+    
+    .modal-header{
+    background: var(--green);
+    color: white;
+    }
+    
+    /* Styling for the symptoms label */
+    label[for="symptoms"] {
+    font-size: 2rem; /* Increase the font size of the label */
+    font-weight: bold; /* Optional: make the label bold */
+    margin-bottom: 0.5rem; /* Add space below the label */
+    }
+    
+    .modal-title{
+    font-size: 2.5rem;
+    }
+    
+    .form-style{
+    background: #fff;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    }
+    
+    .form-style .box{
+    width: 100%;
+    margin: .7rem 0;
+    border-radius: 1rem;
+    border: var(--border);
+    font-size: 2rem; /* Increased font size */
+    color: var(--black);
+    text-transform: none;
+    padding: 1.5rem; /* Increased padding */
+    height: 3.5rem; /* Set a fixed height to make them more prominent */
+    }
+    /* Styling for the symptoms input box */
+    .form-style textarea{
+    width: 100%;
+    margin: .7rem 0;
+    border-radius: 1rem;
+    border: var(--border);
+    font-size: 2rem; /* Increased font size */
+    color: var(--black);
+    text-transform: none;
+    padding: 1.5rem; /* Increased padding */
+    height: 6rem; /* Increased height for more space */
+    resize: vertical; /* Allow vertical resizing */
+    }
+    
+    /* Optional: Adjust the styling of labels for better readability */
+    .form-style label{
+    font-size: 2rem; /* Increased font size */
+    margin-bottom: 1rem;
+    }
+    
+    /* Elongated Button */
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 3rem; /* Increase the horizontal padding */
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    cursor: pointer;
+    font-size: 1.7rem;
+    background: #fff;
+    width: 100%; /* Make the button take full width of its container */ /* Optional: Limit the maximum width */
+    text-align: center; /* Ensure text is centered */
+}
+
+.btn span {
+    padding: .7rem 2rem; /* Adjust the padding for span to elongate */
+    border-radius: .5rem;
+    background: var(--green);
+    color: #fff;
+    margin-left: .5rem;
+}
+
+.btn:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.btn:hover span {
+    color: var(--green);
+    background: #fff;
+    margin-left: 1rem;
+}
+
+    
+    /* Responsive Layout */
+    @media screen and (max-width: 768px){
+    .form-style{
+    padding: 1.5rem;
+    }
+    
+    .form-style .box{
+    font-size: 1.5rem;
+    padding: 1.2rem;
+    }
+    
+    .form-style .btn{
+    padding: 1rem 3rem;
+    }
+    
+    .modal-dialog{
+    max-width: 100%;
+    margin: 20px;
+    }
+    }
+    
+    /* Alert Box */
+    body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    .container{
+    margin-top: 20px;
+    }
+    
+    .container form {
+    max-width: 800px;
+    margin: 0 auto;
+    }
+    
+    h1{
+    color: var(--black);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    }
+    
+    .toggle-button{
+    background-color: var(--green);
+    color: white;
+    font-size: 1.6rem;
+    padding: 8px 45px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    }
+    
+    .toggle-button:hover{
+    background-color: #026c59;
+    }
+    /* Styling for the symptoms input box */
+    #symptoms {
+    width: 100%;
+    padding: 2rem; /* Increase padding inside the input */
+    font-size: 2.0rem; /* Increase font size for better readability */
+    height: 4rem; /* Increase height of the input box */
+    border-radius: 1rem; /* Rounded corners */
+    border: 2px solid #ccc; /* Light border for input box */
+    margin-top: 0.5rem; /* Space between label and input */
+    box-sizing: border-box; /* Include padding in the width and height */
+    }
+    
+        /* Style to make the anchor look like a button */
+        .button-like {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff; /* Green background */
+            color: #026c59; /* White text */
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+            position: absolute; /* Positioning the button */
+            top: 10px; /* Distance from the top */
+            left: 10px; /* Distance from the left */
+            outline: 2px solid #026c59;
+        }
+
+        /* Hover effect */
+        .button-like:hover {
+            background-color: #026c59;
+            color: #ffffff; /* Darker green on hover */
+        }
+    
+    
+    @media screen and (max-width: 768px){
+    h1{
+    font-size: 2.5rem;
+    }
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <a href="https://192.168.0.102:5000/public/Dashboard.html" class="button-like">Go to Dashboard</a>
+<!-- main form of page -->
+<h1 class="mt-4 my-4 text-center text-green" style=" font-family: 'Poppins', sans-serif; 
+font-size: 5em;
+font-weight: 700;
+color: var(--green); 
+margin-bottom: 30px;
+letter-spacing: 2px; 
+line-height: 3.4; 
+text-shadow: var(--text-shadow); 
+text-transform: uppercase; ">
+    Diet & Nutrition
+</h1>
+
+<div class="container my-4 mt-4">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="symptoms">Enter Symptoms:</label>
+            <input type="text" class="form-control", id="symptoms" name="symptoms" placeholder="itching, sleeping, aching">
+
+        </div>
+       
+
+        <!-- Display the transcribed text here -->
+        <div name="mysysms" id="transcription"></div>
+
+    
+        <br>
+
+        <button type="submit" class="btn btn-danger btn-lg" >Predict</button>
+    </form>
+    {% if message %}
+        <script type="text/javascript">
+            alert("{{ message }}");
+        </script>
+    {% endif %}
+</div>
+
+
+<div class="text-center">
+    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#symptomsListModal" 
+    style="background: var(--green); color: rgb(255, 255, 255); border-radius: 8px; padding: 12px 20px; font-size: 20px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease; width: 50%; text-align: center; border: none;"onmouseover="this.style.backgroundColor=var(--green);">
+    Reference Symptoms List
+</button>
+
+</div>
+
+<div class="modal fade" id="symptomsListModal" tabindex="-1" aria-labelledby="symptomsListModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="symptomsListModalLabel">Available Symptoms</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Symptoms List -->
+                <ul>
+                    <li>Itching</li>
+                    <li>Fever</li>
+                    <li>Headache</li>
+                    <li>Fatigue</li>
+                    <li>Body_Aches</li>
+                    <li>Cough</li>
+                    <li>Shortness_of_Breath</li>
+                    <li>Rash</li>
+                    <li>Skin_Rash</li>
+                    <li>Continuous_Sneezing</li>
+                    <li>Shivering</li>
+                    <li>Stomach_Pain</li>
+                    <li>Acidity</li>
+                    <li>Vomiting</li>
+                    <li>Indigestion</li>
+                    <li>Muscle_Wasting</li>
+                    <li>Patches_in_Throat</li>
+                    <li>Weight_Loss</li>
+                    <li>Sunken_Eyes</li>
+                    <li>Chest_Pain</li>
+                    <li>Back_Pain</li>
+                    <li>Weakness_in_Limbs</li>
+                    <li>Chills</li>
+                    <li>Joint_Pain</li>
+                    <li>Yellowish_Skin</li>
+                    <li>Constipation</li>
+                    <li>Pain_During_Bowel_Movements</li>
+                    <li>Breathlessness</li>
+                    <li>Cramps</li>
+                    <li>Weight_Gain</li>
+                    <li>Mood_Swings</li>
+                    <li>Neck_Pain</li>
+                    <li>Muscle_Weakness</li>
+                    <li>Stiff_Neck</li>
+                    <li>Pus_Filled_Pimples</li>
+                    <li>Burning_Micturition</li>
+                    <li>Bladder_Discomfort</li>
+                    <li>High_Fever</li>
+                    <li>Nodal_Skin_Eruptions</li>
+                    <li>Ulcers_on_Tongue</li>
+                    <li>Loss_of_Appetite</li>
+                    <li>Restlessness</li>
+                    <li>Dehydration</li>
+                    <li>Dizziness</li>
+                    <li>Weakness_of_One_Body_Side</li>
+                    <li>Lethargy</li>
+                    <li>Nausea</li>
+                    <li>Abdominal_Pain</li>
+                    <li>Pain_in_Anal_Region</li>
+                    <li>Sweating</li>
+                    <li>Bruising</li>
+                    <li>Cold_Hands_and_Feet</li>
+                    <li>Anxiety</li>
+                    <li>Knee_Pain</li>
+                    <li>Swelling_Joints</li>
+                    <li>Blackheads</li>
+                    <li>Foul_Smell_of_Urine</li>
+                    <li>Skin_Peeling</li>
+                    <li>Blister</li>
+                    <li>Dischromic_Patches</li>
+                    <li>Watering_from_Eyes</li>
+                    <li>Extra_Marital_Contacts</li>
+                    <li>Diarrhoea</li>
+                    <li>Loss_of_Balance</li>
+                    <li>Blurred_and_Distorted_Vision</li>
+                    <li>Altered_Sensorium</li>
+                    <li>Dark_Urine</li>
+                    <li>Swelling_of_Stomach</li>
+                    <li>Bloody_Stool</li>
+                    <li>Obesity</li>
+                    <li>Hip_Joint_Pain</li>
+                    <li>Movement_Stiffness</li>
+                    <li>Spinning_Movements</li>
+                    <li>Scurring</li>
+                    <li>Continuous_Feel_of_Urine</li>
+                    <li>Silver_Like_Dusting</li>
+                    <li>Red_Sore_Around_Nose</li>
+                    <li>Spotting_Urination</li>
+                    <li>Passage_of_Gases</li>
+                    <li>Irregular_Sugar_Level</li>
+                    <li>Family_History</li>
+                    <li>Lack_of_Concentration</li>
+                    <li>Excessive_Hunger</li>
+                    <li>Yellowing_of_Eyes</li>
+                    <li>Distention_of_Abdomen</li>
+                    <li>Irritation_in_Anus</li>
+                    <li>Swollen_Legs</li>
+                    <li>Painful_Walking</li>
+                    <li>Small_Dents_in_Nails</li>
+                    <li>Yellow_Crust_Ooze</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Results -->
+<h1 class="text-center my-4 mt-4">Our AI System Results</h1>
+<div class="container">
+
+    <div class="result-container">
+        <!-- Buttons to toggle display -->
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal">Disease</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal">Precaution</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal">Workouts</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal">Diets</button>
+    </div>
+</div>
+
+
+
+<!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"> <!-- Set header background color inline -->
+                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"> <!-- Set modal body background color inline -->
+                    <p>{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_precautions %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in medications %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in workout %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_diet %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <script>
+    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+    const transcriptionDiv = document.getElementById('transcription');
+
+    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+
+    function startSpeechRecognition() {
+        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
+
+        recognition.lang = 'en-US'; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            transcriptionDiv.textContent = result;
+        };
+
+        recognition.onend = function () {
+            console.log('Speech recognition ended.');
+        };
+
+        recognition.start();
+    }
+    
+
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Med Tech</title>
+  <link rel="icon" href="/image/icon-medtech.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Include the styling you provided here */
+
+    :root{
+        --green: #038C7F;          /* Primary Green */
+        --dark-green: #02776f;     /* Darker green for contrast */
+        --white: #ffffff;          /* White color for light background */
+        --light-green: #B5F2E1;    /* Light Green for highlights */
+        --black: #333;             /* Dark text color */
+        --light-color: #777;       /* Lighter gray color for secondary text */
+        --box-shadow: .5rem .5rem 0 rgba(22, 160, 133, .2); /* Box shadow */
+        --text-shadow: .4rem .4rem 0 rgba(201, 198, 198, 0.2); /* Text shadow */
+        --border: .2rem solid var(--green); /* Border color */
+        --hover-background: #fff;  /* Hover background for buttons */
+        --hover-color: #038C7F;    /* Hover text color */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        border: none;
+        text-transform: capitalize;
+        transition: all .2s ease-out;
+        text-decoration: none;
+    }
+
+    body {
+        display: flex;
+        background-color: #f0f4f8; /* Light background for contrast */
+        min-height: 100vh;
+        color: var(--black); /* Dark text color for better readability */
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background-color: var(--green);
+        color: var(--white);
+        width: 310px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+        box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-profile {
+        text-align: center;
+    }
+
+    .admin-profile img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 4px solid var(--white);
+    }
+
+    .admin-profile h2 {
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+
+    .admin-profile p {
+        font-size: 1em;
+        color: #d3d3d3;
+    }
+
+    .nav-links {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--white);
+        font-size: 1.3em;
+        display: block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--hover-background);
+        color: var(--hover-color);
+    }
+
+    /* Main Content */
+    .container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    max-width: 900px;  /* Maximum width remains 900px */
+    width: 100%;       /* Width is 100% of its parent container */
+    margin: 0 auto;    /* Centers the container horizontally */
+    font-size: 1.4rem;  /* Reduced font size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center align text within the container */
+}
+
+/* Styling for the image inside the container */
+.container img {
+    max-width: 40%;   /* Ensure the image is responsive, adjust as needed */
+    height: auto;     /* Maintain aspect ratio */
+    border-radius: 1rem;
+    margin-bottom: 20px;  /* Add space below the image */
+}
+
+/* Additional responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduced padding on smaller screens */
+        max-width: 100%; /* Container will take up full width */
+        font-size: 1.2rem;  /* Further reduced font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;  /* Further reduced padding for very small screens */
+        font-size: 1rem;  /* Smallest font size for very small screens */
+    }
+}
+
+
+
+    h2 {
+        text-align: center;
+        text-shadow: var(--text-shadow);
+        text-transform: uppercase;
+        color: var(--green);
+        font-size: 3rem;  /* Increased font size */
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-size: 1.5rem;  /* Increased font size */
+        color: var(--black);
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 1.5rem;  /* Increased padding */
+        margin-bottom: 2.5rem;  /* Increased margin */
+        border-radius: 1rem;
+        border: var(--border);
+        font-size: 2rem;  /* Increased font size */
+        color: var(--black);
+    }
+
+    button {
+        width: 100%;
+        padding: 1.5rem;  /* Increased padding */
+        background-color: var(--green);
+        color: #fff;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 2rem;  /* Increased font size */
+        box-shadow: var(--box-shadow);
+    }
+
+    button:hover {
+        background-color: #0e6353;
+    }
+
+    .message {
+        text-align: center;
+        margin-top: 2.5rem;
+        font-size: 2rem;  /* Increased font size */
+        color: var(--black);
+    }
+    #username {
+    color: var(--white); /* Applying the white color defined in :root */
+}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 3.5rem;  /* Slightly smaller on mobile */
+        }
+
+        input, button {
+            font-size: 1.8rem;  /* Adjusted font size on mobile */
+        }
+
+        .container {
+            padding: 2.5rem;  /* Adjusted padding */
+        }
+    }
+
+  </style>
+</head>
+<body>
+  
+<div class="sidebar">
+    <div class="admin-profile">
+        <img src="../image/elder.png" alt="Profile">
+        <h2 id="username">Hey, Welcome Back!</h2>
+        <p id="email">Your profile is loading...</p>
+    </div>
+  
+    <ul class="nav-links">
+        <li><a href="sosindex.html">Emergency SOS</a></li>
+        <li><a href="#" id="dietLink">Diet & Nutrition</a></li>
+        <li><a href="medindex.html">Med Tracker</a></li>
+        <li><a href="virtualindex.html">Virtual Hangout</a></li>
+        <li><a onclick="window.history.back()">Back</a></li>
+    </ul>
+  </div>
+  
+
+  <div class="container">
+    
+    <h2>Virtual Meet</h2>
+    <img src="../image/virtu.jpg" alt="Descriptive Image">
+    <form id="phoneForm">
+      <label for="phoneNumber">Enter Phone Number (with country code)</label>
+      <input type="text" id="phoneNumber" placeholder="+917695960911" required />
+
+      <button type="submit">Send Link and Connect</button>
+    </form>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    document.getElementById('dietLink').addEventListener('click', function(e) {
+        e.preventDefault(); 
+        document.getElementById('runBtn').click(); 
+    });
+    document.getElementById('phoneForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const messageDiv = document.getElementById('message');
+      messageDiv.innerHTML = 'Processing...';
+
+      try {
+        const response = await fetch('/send-meet-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phoneNumber })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          messageDiv.innerHTML = `Meet link sent to ${phoneNumber}! Opening link...`;
+          if (data.meetLink) {
+            // Open the Google Meet link in a new tab
+            window.open(data.meetLink, '_blank');
+          }
+        } else {
+          messageDiv.innerHTML = `Failed to send link: ${data.error}`;
+        }
+      } catch (error) {
+        messageDiv.innerHTML = 'Error occurred while sending the link.';
+        console.error(error);
+      }
+    });
+
+    // Fetch user profile data
+    document.addEventListener('DOMContentLoaded', fetchUserProfile);
+
+    async function fetchUserProfile() {
+        try {
+            const response = await fetch('/userprofile', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.status === 200) {
+                const userData = await response.json();
+                document.getElementById('username').textContent = userData.username;
+                document.getElementById('email').textContent = userData.email;
+            } else {
+                console.error('Failed to fetch user profile');
+            }
+        } catch (err) {
+            console.error('Error fetching user profile:', err);
+        }
+    }
+    
+  </script>
+</body>
+</html>
+
+
+<!--
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Google Meet Link</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Include the styling you provided here */
+
+    :root{
+        --green: #038C7F;
+        --black: #444;
+        --light-color: #777;
+        --box-shadow: .5rem .5rem 0 rgba(22, 160, 133, .2);
+        --text-shadow: .4rem .4rem 0 rgba(0, 0, 0, 0.119);
+        --border: .2rem solid var(--green);
+    }
+
+    * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-transform: capitalize;
+        transition: all .2s ease-out;
+        text-decoration: none;
+    }
+
+    html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 7rem;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f5f5f5;
+    }
+    /* Sidebar */
+.sidebar {
+    background-color: var(--green);
+    color: var(--white);
+    width: 310px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-profile {
+    text-align: center;
+}
+
+.admin-profile img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--white);
+}
+
+.admin-profile h2 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.admin-profile p {
+    font-size: 1em;
+    color: #d3d3d3;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 20px 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.3em;
+    display: block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--hover-background);
+    color: var(--hover-color);
+}
+    .container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 1rem;
+        box-shadow: var(--box-shadow);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        text-shadow: var(--text-shadow);
+        text-transform: uppercase;
+        color: var(--green);
+        font-size: 4rem;  /* Increased font size */
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        font-size: 2rem;  /* Increased font size */
+        color: var(--black);
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 1.5rem;  /* Increased padding */
+        margin-bottom: 2.5rem;  /* Increased margin */
+        border-radius: 1rem;
+        border: var(--border);
+        font-size: 2rem;  /* Increased font size */
+        color: var(--black);
+    }
+
+    button {
+        width: 100%;
+        padding: 1.5rem;  /* Increased padding */
+        background-color: var(--green);
+        color: #fff;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 2rem;  /* Increased font size */
+        box-shadow: var(--box-shadow);
+    }
+
+    button:hover {
+        background-color: #0e6353;
+    }
+
+    .message {
+        text-align: center;
+        margin-top: 2.5rem;
+        font-size: 2rem;  /* Increased font size */
+        color: var(--black);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 3.5rem;  /* Slightly smaller on mobile */
+        }
+
+        input, button {
+            font-size: 1.8rem;  /* Adjusted font size on mobile */
+        }
+
+        .container {
+            padding: 2.5rem;  /* Adjusted padding */
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="admin-profile">
+        <img src="../image/elder.png" alt="Profile">
+        <h2 id="username">Loading...</h2>
+        <p id="email">Loading...</p>
+    </div>
+
+
+
+    <ul class="nav-links">
+        <li><a href="#sos">SOS Button</a></li>
+        <li><a href="medindex.html">Medication Reminder</a></li>
+        <li><a href="#virtual">Virtual Meeting</a></li>
+        <li><a onclick="window.history.back()">Logout</a></li>
+
+    </ul>
+</div>
+
+  <div class="container">
+    <h2>Virtual Meet</h2>
+    <form id="phoneForm">
+      <label for="phoneNumber">Enter Phone Number (with country code)</label>
+      <input type="text" id="phoneNumber" placeholder="+917695960911" required />
+
+      <button type="submit">Send Link and Connect</button>
+    </form>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    document.getElementById('phoneForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const messageDiv = document.getElementById('message');
+      messageDiv.innerHTML = 'Processing...';
+
+      try {
+        const response = await fetch('/send-meet-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phoneNumber })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          messageDiv.innerHTML = `Meet link sent to ${phoneNumber}! Opening link...`;
+          if (data.meetLink) {
+            // Open the Google Meet link in a new tab
+            window.open(data.meetLink, '_blank');
+          }
+        } else {
+          messageDiv.innerHTML = `Failed to send link: ${data.error}`;
+        }
+      } catch (error) {
+        messageDiv.innerHTML = 'Error occurred while sending the link.';
+        console.error(error);
+      }
+    });
+
+    
+// Fetch user profile data
+document.addEventListener('DOMContentLoaded', fetchUserProfile);
+
+async function fetchUserProfile() {
+    try {
+        const response = await fetch('/userprofile', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 200) {
+            const userData = await response.json();
+            document.getElementById('username').textContent = userData.username;
+            document.getElementById('email').textContent = userData.email;
+        } else {
+            console.error('Failed to fetch user profile');
+        }
+    } catch (err) {
+        console.error('Error fetching user profile:', err);
+    }
+}
+
+
+  </script>
+</body>
+</html>
+-->

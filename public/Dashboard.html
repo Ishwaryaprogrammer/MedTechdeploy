@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med Tech</title>
+    <link rel="icon" href="/image/icon-medtech.png" type="image/png">
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <div class="admin-profile">
+            <img src="../image/elder.png" alt="Profile">
+            <h2 id="username">Hey, Welcome Back!</h2>
+            <p id="email">Your profile is loading...</p>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="sosindex.html">Emergency SOS</a></li>
+            <li><a href="#" id="dietLink" onclick="redirectToDiet()">Diet & Nutrition</a></li>
+            <li><a href="medindex.html">Med Tracker</a></li>
+            <li><a href="virtualindex.html">Virtual Hangout</a></li>
+            <li><a href="#" id="logoutLink">Logout</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <header>
+            <h1>Dashboard</h1>
+        </header>
+
+        <!-- Dashboard Cards Section -->
+        <section id="dashboard">
+            <div class="dashboard-cards">
+                <!-- SOS Button Card -->
+                <div class="dashboard-card" id="sos">
+                    <h3>Emergency SOS</h3>
+                    <p>Activate help with just your voice.</p>
+                    <button onclick="window.location.href='sosindex.html'">Send SOS</button>
+                </div>
+                
+                <div class="dashboard-card" id="diet">
+                    <h3>Diet & Nutrition</h3>
+                    <p>Your personalized health plan, at your fingertips.</p>
+                    <button id="runBtn" >Let’s Go!</button>
+                </div>
+
+                <!-- Medication Reminder Card -->
+                <div class="dashboard-card" id="reminder">
+                    <h3>Med Tracker</h3>
+                    <p>Never miss a dose again.</p>
+                    <button onclick="window.location.href='medindex.html'">Manage Meds</button>
+                </div>
+
+                <!-- Virtual Meeting Card -->
+                <div class="dashboard-card" id="meeting">
+                    <h3>Virtual Hangout</h3>
+                    <p>Jump into a meeting, no hassle.</p>
+                    <button onclick="window.location.href='virtualindex.html'">Start Meeting</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="dashboard.js"></script>
+    <script>
+        
+        document.getElementById('dietLink').addEventListener('click', function(e) {
+            e.preventDefault(); 
+            document.getElementById('runBtn').click(); 
+        });
+        
+    
+
+
+  function logout() {
+    fetch('/logout', {
+      method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'Logout successful') {
+        window.location.href = 'index.html';  // Redirect to the index.html page
+      } else {
+        alert("Logout failed");
+      }
+    })
+    .catch(error => console.error('Logout error:', error));
+  }
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Med Tech</title>
+  <link rel="icon" href="/image/icon-medtech.png" type="image/png">
+  <link rel="stylesheet" href="medstyles.css">
+</head>
+<body>
+  
+  <div class="sidebar">
+    <div class="admin-profile">
+        <img src="../image/elder.png" alt="Profile">
+        <h2 id="username">Hey, Welcome Back!</h2>
+        <p id="email">Your profile is loading...</p>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="sosindex.html">Emergency SOS</a></li>
+        <li><a href="#" id="dietLink">Diet & Nutrition</a></li>
+        <li><a href="medindex.html">Med Tracker</a></li>
+        <li><a href="virtualindex.html">Virtual Hangout</a></li>
+        <li><a onclick="window.history.back()">Back</a></li>
+    </ul>
+  </div>
+
+
+  <div class="main-content">
+    <header>
+      <h1>Medication Scheduler</h1>
+      <button id="add-medicine-btn">Add Medicine</button>
+    </header>
+
+    <main>
+      <div id="medicine-list"></div>
+    </main>
+
+    <div id="modal" class="hidden">
+      <div class="modal-content">
+        <form id="medicine-form">
+          <h2>Add Medicine</h2>
+          <label for="name">Medicine Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="dose">Dose:</label>
+          <input type="text" id="dose" name="dose" required>
+
+          <label for="type">Type:</label>
+          <select id="type" name="type">
+            <option value="Tablet">Tablet</option>
+            <option value="Capsule">Capsule</option>
+            <option value="Syrup">Syrup</option>
+          </select>
+
+          <label for="when">When to Take:</label>
+<div class="when-to-take">
+  <input type="checkbox" id="morning" name="when" value="Morning">
+  <label for="morning" class="when-label">Morning</label>
+  
+  <input type="checkbox" id="afternoon" name="when" value="Afternoon">
+  <label for="afternoon" class="when-label">Afternoon</label>
+  
+  <input type="checkbox" id="night" name="when" value="Night">
+  <label for="night" class="when-label">Night</label>
+</div>
+
+          <label for="frequency">Frequency:</label>
+          <select id="frequency" name="frequency">
+            <option value="Daily">Daily</option>
+            <option value="Every Other Day">Every Other Day</option>
+            <option value="Custom">Custom</option>
+          </select>
+
+          <div id="custom-days" class="hidden">
+            <label>Select Days:</label>
+            <div class="days-selector">
+              <button type="button" value="Monday">Mon</button>
+              <button type="button" value="Tuesday">Tue</button>
+              <button type="button" value="Wednesday">Wed</button>
+              <button type="button" value="Thursday">Thu</button>
+              <button type="button" value="Friday">Fri</button>
+              <button type="button" value="Saturday">Sat</button>
+              <button type="button" value="Sunday">Sun</button>
+            </div>
+          </div>
+
+          <button type="submit">Add Medicine</button>
+          <button type="button" id="close-modal-btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="medscript.js"></script>
+</body>
+</html>
+
+
+
+
