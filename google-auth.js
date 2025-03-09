@@ -1,3 +1,4 @@
+require('dotenv').config(); // Load environment variables
 const { google } = require('googleapis');
 const readlineSync = require('readline-sync');
 const fs = require('fs');
@@ -6,28 +7,15 @@ const { OAuth2Client } = require('google-auth-library');
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 const TOKEN_PATH = path.join(__dirname, 'token.json');
-const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json');  // Downloaded from Google Cloud Console
- // Ensure this path is correct
 
-
- // Check if the file is being read correctly
- fs.readFile(CREDENTIALS_PATH, (err, content) => {
-   if (err) {
-     console.log('Error reading credentials file:', err);
-     return;
-   }
-   try {
-     const credentials = JSON.parse(content);
-      // Add this line to check the content of the file
-   } catch (err) {
-     console.log('Error parsing credentials JSON:', err);
-   }
- });
- 
-// Load OAuth2 credentials
+// Load credentials from .env
 function getCredentials() {
-    const content = fs.readFileSync(CREDENTIALS_PATH);
-    return JSON.parse(content);
+    try {
+        return JSON.parse(process.env.GOOGLE_CREDENTIALS);
+    } catch (error) {
+        console.error('Error parsing Google credentials from environment variables:', error);
+        process.exit(1);
+    }
 }
 
 // Create an OAuth2 client
@@ -50,10 +38,14 @@ function getNewToken(oAuth2Client, callback) {
         access_type: 'offline',
         scope: SCOPES,
     });
-    console.log('Authorize this app by visiting this url: ', authUrl);
+
+    console.log('Authorize this app by visiting this URL:', authUrl);
     const code = readlineSync.question('Enter the code from that page here: ');
     oAuth2Client.getToken(code, (err, token) => {
-        if (err) return console.error('Error retrieving access token', err);
+        if (err) {
+            console.error('Error retrieving access token:', err);
+            return;
+        }
         oAuth2Client.setCredentials(token);
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
         callback(oAuth2Client);
