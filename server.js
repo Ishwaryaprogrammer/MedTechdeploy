@@ -56,9 +56,10 @@ app.use(session({
   }
 }));
 
+const MONGO_URI = process.env.MONGO_URI ;
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/medtechy', {
+mongoose.connect(MONGO_URI, {
 }).then(async () => {
   console.log("Connected to MongoDB");
 
